@@ -1,20 +1,20 @@
-import React from 'react';
-import { View, Text, FlatList, StyleSheet, Button } from 'react-native';
+import React, { useContext } from 'react';
+import { View, FlatList, StyleSheet } from 'react-native';
+import { AppContext } from '../context/AppContext';
+import PlantCard from '../components/PlantCard';
+import CustomButton from '../components/CustomButton';
 
 const HomeScreen = ({ navigation }) => {
-  const plants = []; // Esimerkkinä kasvien lista, voit käyttää tilanhallintaa myöhemmin
+  const { plants } = useContext(AppContext);
 
   return (
     <View style={styles.container}>
-      <Text>Kasvilista</Text>
       <FlatList
         data={plants}
-        renderItem={({ item }) => (
-          <Text>{item.name}</Text>
-        )}
-        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => <PlantCard plant={item} />}
+        keyExtractor={(item) => item.id.toString()}
       />
-      <Button title="Lisää kasvi" onPress={() => navigation.navigate('AddPlant')} />
+      <CustomButton title="Lisää kasvi" onPress={() => navigation.navigate('AddPlant')} />
     </View>
   );
 };
@@ -22,8 +22,7 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 10,
   },
 });
 
