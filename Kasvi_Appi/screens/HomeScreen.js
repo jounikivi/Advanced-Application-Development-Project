@@ -3,19 +3,25 @@ import { View, FlatList, StyleSheet, Text } from 'react-native';
 import CustomButton from '../components/CustomButton';
 import PlantCard from '../components/PlantCard';
 import { AppContext } from '../context/AppContext';
+import { useTheme } from '@react-navigation/native';
 
 // Etusivun näkymä, joka näyttää listan kasveista
 // Sisältää toiminnon lisätä uusi kasvi ja poistaa olemassa olevia kasveja
 const HomeScreen = ({ navigation }) => {
   const { plants, removePlant } = useContext(AppContext); // Haetaan kasvit ja poistotoiminto kontekstista
+  const { colors } = useTheme(); // Access the current theme's colors
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       {/* Jos lista on tyhjä, näytetään ohjeet käyttäjälle */}
       {plants.length === 0 ? (
         <View style={styles.emptyContainer}>
-          <Text style={styles.emptyText}>Ei kasveja lisättynä.</Text>
-          <Text style={styles.emptyText}>Paina 'Lisää kasvi' aloittaaksesi.</Text>
+          <Text style={[styles.emptyText, { color: colors.text }]}>
+            Ei kasveja lisättynä.
+          </Text>
+          <Text style={[styles.emptyText, { color: colors.text }]}>
+            Paina 'Lisää kasvi' aloittaaksesi.
+          </Text>
         </View>
       ) : (
         // Näytetään lista kasveista käyttäen PlantCard-komponenttia
@@ -29,7 +35,11 @@ const HomeScreen = ({ navigation }) => {
       )}
 
       {/* Painike uuden kasvin lisäämiseen */}
-      <CustomButton title="Lisää kasvi" onPress={() => navigation.navigate('AddPlant')} />
+      <CustomButton
+        title="Lisää kasvi"
+        onPress={() => navigation.navigate('AddPlant')}
+        style={{ backgroundColor: colors.primary }}
+      />
     </View>
   );
 };

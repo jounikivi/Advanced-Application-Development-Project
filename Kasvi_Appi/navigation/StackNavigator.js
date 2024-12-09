@@ -8,7 +8,17 @@ const Stack = createStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerStyle: { backgroundColor: '#f8f8f8' }, // Default light theme
+        headerTintColor: '#000', // Default text color
+        headerTitleStyle: {
+          fontWeight: 'bold', // Ensure header title styling
+          fontSize: 18, // Set font size
+        },
+      }}
+    >
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="AddPlant" component={AddPlantScreen} />
       <Stack.Screen name="PlantProfile" component={PlantProfileScreen} />

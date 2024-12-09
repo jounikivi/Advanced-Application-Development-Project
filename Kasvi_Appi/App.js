@@ -1,15 +1,16 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import StackNavigator from "./navigation/StackNavigator"; 
-import { AppProvider } from "./context/AppProvider";
+import { AppProvider } from './context/AppProvider';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 export default function App() {
   return (
     <AppProvider>
       <NavigationContainer>
-        <StackNavigator />
+        <BottomTabNavigator />
+        <StatusBar style="auto" />
       </NavigationContainer>
     </AppProvider>
   );
