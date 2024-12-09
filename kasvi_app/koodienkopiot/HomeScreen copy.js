@@ -29,7 +29,7 @@ const HomeScreen = ({ navigation }) => {
       )}
 
       {/* Painike uuden kasvin lisäämiseen */}
-      <CustomButton title="Lisää kasvi" onPress={() => navigation.navigate('AddPlant')} />
+      {/* <CustomButton title="Lisää kasvi" onPress={() => navigation.navigate('AddPlant')} /> */}
     </View>
   );
 };
