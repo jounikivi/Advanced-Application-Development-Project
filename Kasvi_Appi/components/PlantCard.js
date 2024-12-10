@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button } from 'react-native';
 
 // Komponentti, joka näyttää yksittäisen kasvin tiedot
 const PlantCard = ({ plant, onRemove }) => {
-  // Muotoillaan päivämäärä Suomen aikavyöhykkeeseen
+  // Muotoillaan päivämäärä Suomen aikavyöhykkeeseen, koska muita aikoja on outoa lukea
   const formattedDate = new Date(plant.nextWatering).toLocaleString('fi-FI', {
     timeZone: 'Europe/Helsinki', // Suomen aikavyöhyke
     day: '2-digit', // Päivä kahdella numerolla
